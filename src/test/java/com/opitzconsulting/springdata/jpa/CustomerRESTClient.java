@@ -9,17 +9,22 @@ import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
 
 
 public class CustomerRESTClient {
 
+    static final String BASE_URL = "http://localhost:8080";
+
+    static final String CUSTOMERS_REL = "customer";
+
     public static void main(String[] args) {
-        RestOperations restOperations = getRestOperations();
+        RestOperations restOperations = new RestTemplate();
 
         // Access root resource
-        ResourceSupport result = restOperations.getForObject(ClientConfiguration.BASE_URL, Resource.class);
+        ResourceSupport result = restOperations.getForObject(CustomerRESTClient.BASE_URL, Resource.class);
 
-        Link link = result.getLink(ClientConfiguration.CUSTOMERS_REL);
+        Link link = result.getLink(CustomerRESTClient.CUSTOMERS_REL);
         System.out.println("Following: " + link.getHref());
 
         // Follow link relation for customers to access those
@@ -29,12 +34,6 @@ public class CustomerRESTClient {
             Customer customer = dto.getContent();
             System.out.println(customer);
         }
-    }
-
-    private static RestOperations getRestOperations() {
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
-        context.registerShutdownHook();
-        return context.getBean(RestOperations.class);
     }
 
     static class CustomerResource extends Resource<Customer> {

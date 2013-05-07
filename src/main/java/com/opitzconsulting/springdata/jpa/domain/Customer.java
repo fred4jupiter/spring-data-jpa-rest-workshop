@@ -15,17 +15,11 @@ public class Customer {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "SALES_AMOUNT")
-    private Double salesAmount;
-
     @Column(name = "FIRST_NAME")
     private String firstname;
 
     @Column(name = "LAST_NAME")
     private String lastname;
-
-    @Column(name = "EMAIL", unique = true)
-    private EmailAddress emailAddress;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "CUSTOMER_ID")
@@ -35,15 +29,9 @@ public class Customer {
         // for hibernate
     }
 
-    public Customer(Double salesAmount, String firstname, String lastname, String emailAddress) {
-        this.salesAmount = salesAmount;
+    public Customer(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.emailAddress = new EmailAddress(emailAddress);
-    }
-
-    public Double getSalesAmount() {
-        return salesAmount;
     }
 
     public Long getId() {
@@ -58,10 +46,6 @@ public class Customer {
         return lastname;
     }
 
-    public EmailAddress getEmailAddress() {
-        return emailAddress;
-    }
-
     public Set<Address> getAddresses() {
         return addresses;
     }
@@ -71,7 +55,6 @@ public class Customer {
         final ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
         builder.append("firstname", firstname);
         builder.append("lastname", lastname);
-        builder.append("emailAddress", emailAddress);
         builder.append("addresses", addresses);
         return builder.toString();
     }

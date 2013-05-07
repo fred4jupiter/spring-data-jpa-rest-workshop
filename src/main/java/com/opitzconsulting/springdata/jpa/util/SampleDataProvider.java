@@ -11,40 +11,35 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Populates demo data at startup to query some data at runtime.
  */
 @Component
-public class SampleDataProvider implements ApplicationListener<ContextRefreshedEvent> {
+public class SampleDataProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(SampleDataProvider.class);
 
-    private final CustomerRepository customerRepository;
-
     @Autowired
-    public SampleDataProvider(CustomerRepository customerRepository) {
-        LOG.info("SampleDataProvider activated!");
+    private CustomerRepository customerRepository;
 
-        Assert.notNull(customerRepository, "CustomerRepository must not be null!");
-        this.customerRepository = customerRepository;
-    }
-
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    @PostConstruct
+    public void populateDemoCustomers() {
         Assert.notNull(customerRepository, "CustomerRepository must not be null!");
         LOG.info("populating demo customers...");
-        populateDemoCustomers();
-    }
 
-    private void populateDemoCustomers() {
-        Customer customer1 = new Customer(500.00, "Fred", "Feuerstein", "fred@feuerstein.de");
+        Customer customer1 = new Customer("Fred", "Feuerstein");
         customer1.addAddress(new Address("Milchstrasse", "Hamburg", "Deutschland"));
         saveCustomer(customer1);
 
-        saveCustomer(new Customer(546.34, "Wilma", "Feuerstein", "wilma@feuerstein.de"));
-        saveCustomer(new Customer(12345.00, "Karl", "Katze", "karl@katze.de"));
-        saveCustomer(new Customer(250.00, "Bert", "Bernstein", "bert@bernstein.de"));
-        saveCustomer(new Customer(7596.00, "Elke", "Olle", "elke@olle.de"));
+        saveCustomer(new Customer("Wilma", "Feuerstein"));
+        saveCustomer(new Customer("Gertrud", "Fischer"));
+        saveCustomer(new Customer("Teobald", "Frosch"));
+        saveCustomer(new Customer("Gerlinde", "Furchbar"));
+        saveCustomer(new Customer("Karl", "Katze"));
+        saveCustomer(new Customer("Bert", "Bernstein"));
+        saveCustomer(new Customer("Elke", "Olle"));
     }
 
     private void saveCustomer(Customer customer1) {

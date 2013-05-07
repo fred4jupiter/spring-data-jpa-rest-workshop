@@ -43,6 +43,6 @@ public class SampleDataProvider {
     }
 
     private void saveCustomer(Customer customer1) {
-        customerRepository.saveAndFlush(customer1);
+        customerRepository.save(customer1);
     }
 }

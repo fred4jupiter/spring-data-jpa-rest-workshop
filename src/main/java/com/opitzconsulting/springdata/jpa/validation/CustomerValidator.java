@@ -5,7 +5,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-
+/**
+ * Custom validator for the customer class.
+ */
 public class CustomerValidator implements Validator {
 
     @Override

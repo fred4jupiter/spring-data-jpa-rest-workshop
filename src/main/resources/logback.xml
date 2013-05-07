@@ -9,8 +9,9 @@
 
     <logger name="org.springframework" level="warn"/>
 
-    <logger name="org.springframework.data" level="debug"/>
+    <logger name="org.springframework.data" level="info"/>
 
+    <!-- application based logging-->
     <logger name="com.opitzconsulting.springdata.jpa" level="debug"/>
 
     <root level="warn">

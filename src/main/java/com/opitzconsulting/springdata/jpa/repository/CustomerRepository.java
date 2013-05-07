@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.repository.annotation.RestResource;
 
+import java.util.List;
+
 @RestResource(rel = "customers", path = "customers")
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
@@ -31,4 +33,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      */
     @RestResource(path = "lastnameStartsWith", rel = "lastnameStartsWith")
     Page<Customer> findByLastnameStartsWith(@Param("lastname") String lastname, Pageable pageable);
+
+    @RestResource(path = "firstname", rel = "firstname")
+    List<Customer> findByFirstname(@Param("firstname") String firstname);
 }

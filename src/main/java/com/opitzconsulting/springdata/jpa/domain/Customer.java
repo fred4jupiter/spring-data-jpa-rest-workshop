@@ -1,9 +1,11 @@
 package com.opitzconsulting.springdata.jpa.domain;
 
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,9 +18,11 @@ public class Customer {
     private Long id;
 
     @Column(name = "FIRST_NAME")
+    @NotNull
     private String firstname;
 
     @Column(name = "LAST_NAME")
+    @NotNull
     private String lastname;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

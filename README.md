@@ -7,6 +7,8 @@ You can use Google Chrome´s extension "Dev HTTP Client" or curl to experiment t
 
 For example you can this JSON data to add an address via a POST request:
 
+http://localhost:8080/addresses
+
 {
   "country" : "Deutschland",
   "city" : "Stuttgart",

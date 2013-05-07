@@ -11,7 +11,7 @@ import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.client.RestOperations;
 
 
-public class CustomerRepositoryTests {
+public class CustomerRESTClient {
 
     public static void main(String[] args) {
         RestOperations restOperations = getRestOperations();

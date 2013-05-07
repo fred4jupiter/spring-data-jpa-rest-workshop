@@ -1,6 +1,6 @@
 package com.opitzconsulting.springdata.jpa;
 
-import org.springframework.data.rest.webmvc.RepositoryRestExporterServlet;
+import org.springframework.data.rest.webmvc.RepositoryRestDispatcherServlet;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -23,7 +23,7 @@ public class RestWebApplicationInitializer implements WebApplicationInitializer 
         container.addListener(new ContextLoaderListener(rootContext));
 
         // Register and map the dispatcher servlet
-        DispatcherServlet servlet = new RepositoryRestExporterServlet();
+        DispatcherServlet servlet = new RepositoryRestDispatcherServlet();
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", servlet);
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");

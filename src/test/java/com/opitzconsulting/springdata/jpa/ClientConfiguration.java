@@ -1,8 +1,8 @@
 package com.opitzconsulting.springdata.jpa;
 
 
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
-import org.codehaus.jackson.map.ObjectMapper;
+//import org.codehaus.jackson.map.DeserializationConfig.Feature;
+//import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -24,18 +24,18 @@ public class ClientConfiguration {
 
     @Bean
     public RestOperations restOperations() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-        MappingJacksonHttpMessageConverter converter = new MappingJacksonHttpMessageConverter();
-        converter.setObjectMapper(mapper);
-        converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
-
-        List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
-        converters.add(converter);
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//
+//        MappingJacksonHttpMessageConverter converter = new MappingJacksonHttpMessageConverter();
+//        converter.setObjectMapper(mapper);
+//        converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
+//
+//        List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
+//        converters.add(converter);
 
         RestTemplate template = new RestTemplate();
-        template.setMessageConverters(converters);
+//        template.setMessageConverters(converters);
 
         return template;
     }

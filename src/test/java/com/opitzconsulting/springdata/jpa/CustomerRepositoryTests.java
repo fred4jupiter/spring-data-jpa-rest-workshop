@@ -11,10 +11,9 @@ import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.client.RestOperations;
 
 
-public class CustomerRepositoryTests extends AbstractTestingBase {
+public class CustomerRepositoryTests {
 
-    @Test
-    public void callRESTInterfaceOfCustomers() {
+    public static void main(String[] args) {
         RestOperations restOperations = getRestOperations();
 
         // Access root resource
@@ -32,7 +31,7 @@ public class CustomerRepositoryTests extends AbstractTestingBase {
         }
     }
 
-    private RestOperations getRestOperations() {
+    private static RestOperations getRestOperations() {
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
         context.registerShutdownHook();
         return context.getBean(RestOperations.class);

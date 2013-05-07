@@ -1,9 +1,6 @@
 package com.opitzconsulting.springdata.jpa;
 
 import com.opitzconsulting.springdata.jpa.domain.Customer;
-import org.junit.Test;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
@@ -16,7 +13,7 @@ public class CustomerRESTClient {
 
     static final String BASE_URL = "http://localhost:8080";
 
-    static final String CUSTOMERS_REL = "customer";
+    static final String CUSTOMERS_REL = "customers";
 
     public static void main(String[] args) {
         RestOperations restOperations = new RestTemplate();

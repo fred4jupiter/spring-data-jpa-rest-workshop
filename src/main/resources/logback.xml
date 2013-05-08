@@ -7,14 +7,16 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="warn"/>
+    <logger name="org.springframework" level="WARN"/>
 
-    <logger name="org.springframework.data" level="info"/>
+    <logger name="org.springframework.data" level="INFO"/>
+
+    <logger name="java.sql" level="WARN" />
 
     <!-- application based logging-->
-    <logger name="com.opitzconsulting.springdata.jpa" level="debug"/>
+    <logger name="com.opitzconsulting.springdata.jpa" level="DEBUG"/>
 
-    <root level="warn">
+    <root level="WARN">
         <appender-ref ref="console"/>
     </root>
 

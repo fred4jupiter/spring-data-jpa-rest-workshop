@@ -7,15 +7,20 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="warn"/>
+    <logger name="org.springframework" level="WARN"/>
 
-    <logger name="org.hibernate" level="warn"/>
+    <logger name="org.springframework.data" level="INFO"/>
 
-    <logger name="org.jboss" level="info"/>
+    <logger name="org.hibernate" level="WARN"/>
 
-    <logger name="org.springframework.data" level="debug"/>
+    <logger name="org.jboss" level="INFO"/>
 
-    <root level="debug">
+    <logger name="java.sql" level="WARN" />
+
+    <!-- application based logging-->
+    <logger name="com.opitzconsulting.springdata.jpa" level="DEBUG"/>
+
+    <root level="DEBUG">
         <appender-ref ref="console"/>
     </root>
 

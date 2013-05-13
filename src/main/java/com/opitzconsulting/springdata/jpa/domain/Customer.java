@@ -59,11 +59,11 @@ public class Customer {
         final ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE);
         builder.append("firstname", firstname);
         builder.append("lastname", lastname);
-        builder.append("addresses", addresses);
         return builder.toString();
     }
 
     public void addAddress(Address address) {
+        address.setCustomer(this);
         this.addresses.add(address);
     }
 }

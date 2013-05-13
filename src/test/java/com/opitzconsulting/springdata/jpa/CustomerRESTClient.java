@@ -1,5 +1,6 @@
 package com.opitzconsulting.springdata.jpa;
 
+import com.opitzconsulting.springdata.jpa.domain.Address;
 import com.opitzconsulting.springdata.jpa.domain.Customer;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedResources;
@@ -8,12 +9,14 @@ import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Set;
+
 
 public class CustomerRESTClient {
 
-    static final String BASE_URL = "http://localhost:8080";
+    private static final String BASE_URL = "http://localhost:8080";
 
-    static final String CUSTOMERS_REL = "customers";
+    private static final String CUSTOMERS_REL = "customers";
 
     public static void main(String[] args) {
         RestOperations restOperations = new RestTemplate();
@@ -33,11 +36,11 @@ public class CustomerRESTClient {
         }
     }
 
-    static class CustomerResource extends Resource<Customer> {
+    private static class CustomerResource extends Resource<Customer> {
 
     }
 
-    static class CustomersPagedResources extends PagedResources<CustomerResource> {
+    private static class CustomersPagedResources extends PagedResources<CustomerResource> {
 
     }
 }

@@ -24,6 +24,9 @@ public class Address {
     @Column(name = "COUNTRY")
     private String country;
 
+    @ManyToOne
+    private Customer customer;
+
     public Address(String street, String city, String country) {
         Assert.hasText(street, "Street must not be null or empty!");
         Assert.hasText(city, "City must not be null or empty!");
@@ -63,4 +66,11 @@ public class Address {
         return builder.toString();
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

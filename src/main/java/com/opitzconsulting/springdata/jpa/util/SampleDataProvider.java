@@ -2,6 +2,7 @@ package com.opitzconsulting.springdata.jpa.util;
 
 import com.opitzconsulting.springdata.jpa.domain.Address;
 import com.opitzconsulting.springdata.jpa.domain.Customer;
+import com.opitzconsulting.springdata.jpa.repository.AddressRepository;
 import com.opitzconsulting.springdata.jpa.repository.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,8 @@ public class SampleDataProvider {
         LOG.info("populating demo customers...");
 
         Customer customer1 = new Customer("Fred", "Feuerstein");
-        customer1.addAddress(new Address("Milchstrasse", "Hamburg", "Deutschland"));
+        Address address = new Address("Milchstrasse", "Hamburg", "Deutschland");
+        customer1.addAddress(address);
         saveCustomer(customer1);
 
         saveCustomer(new Customer("Wilma", "Feuerstein"));

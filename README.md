@@ -1,5 +1,11 @@
-spring-data-jpa-rest-workshop
+# spring-data-jpa-rest-workshop
 ========================
+
+---
+**NOTE**
+This repository is DEPRECATED!
+---
+
 
 Example using Spring Data JPA with REST exporter.
 
